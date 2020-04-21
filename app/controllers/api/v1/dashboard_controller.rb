@@ -4,14 +4,11 @@ class Api::V1::DashboardController < ApplicationController
     load_recommendations
   end
 
-
   private
-
 
   def load_recent_heard
     @recent_albums = current_user.recently_heards.order("created_at DESC").limit(4).map(&:album)
   end
-
 
   def load_recommendations
     heard_categories = @recent_albums.map(&:category)
