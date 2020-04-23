@@ -1,8 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
   get 'home/index'
-  get "*path", to: "home#index", :constraints => lambda { |req| req.path !~ /\.(png|jpg|js|css|json)$/ }
-  root to: 'home#index'
+  # root to: 'home#index'
 
   concern :favoritable do |options|
     shallow do
@@ -31,4 +30,5 @@ Rails.application.routes.draw do
       end
     end
   end
+  get "*path", to: "home#index", :constraints => lambda { |req| req.path !~ /\.(png|jpg|js|css|json)$/ }
 end
